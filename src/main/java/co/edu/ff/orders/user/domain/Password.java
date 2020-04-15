@@ -5,14 +5,16 @@ import co.edu.ff.orders.user.serialization.StringSerializable;
 import lombok.Value;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
+
 @Value(staticConstructor = "of")
-public class Username implements StringSerializable {
+public class Password implements StringSerializable {
     String value;
 
-    private Username(String value){
+    public Password(String value){
         Preconditions.checkNotNull(value);
         Preconditions.checkArgument(StringUtils.isNoneBlank(value));
-        Preconditions.checkArgument(value.length() >= 6);
+        Preconditions.checkArgument(value.length() >= 8);
         this.value = value;
     }
 
