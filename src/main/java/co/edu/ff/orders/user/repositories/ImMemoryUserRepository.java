@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-@Repository
-@Qualifier("in-memory")
 public class ImMemoryUserRepository implements UserRepository {
     private final Map<Long, UserCreated> state = new HashMap<>();
 
@@ -24,8 +23,13 @@ public class ImMemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public UserCreated findById(Long id) {
-        return state.get(id);
+    public Optional<UserCreated> findById(Long id) {
+        return Optional.ofNullable(state.get(id));
+    }
+
+    @Override
+    public Optional<UserCreated> findByUsername(Username username) {
+        return Optional.empty();
     }
 
 

@@ -15,12 +15,12 @@ import javax.sql.DataSource;
 public class DatasourceConfiguration {
 
     @Bean
-    @Profile("test")
+    @Profile({"test", "dev"})
     public DataSource testDatasource(){
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("classpath:scripts/schema.sql")
-                .addScript("classpath:scripts/data.sql")
+                //.addScript("classpath:scripts/data.sql")
                 .build();
     }
 
