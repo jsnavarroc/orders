@@ -1,4 +1,7 @@
 package co.edu.ff.orders.product.domain;
 
-public class ProductStatus {
+public enum ProductStatus {
+    ERASER,
+    PUBLISHED;
+
 }
